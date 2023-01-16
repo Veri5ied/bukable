@@ -5,6 +5,10 @@
   align-items: center;
   padding: 0 3rem;
 
+  @media screen and (max-width: 576px) {
+    justify-content: center;
+  }
+
   .topnavigation-sec {
     gap: 1.2em;
     display: flex;
@@ -29,6 +33,10 @@
         font-size: 14px;
         line-height: 17px;
         letter-spacing: 0.01em;
+
+        @media screen and (max-width: 576px) {
+          width: 100%;
+        }
       }
     }
   }

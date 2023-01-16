@@ -29,7 +29,7 @@
     .home__layout--left {
       display: grid;
       gap: 0.8em;
-      width: 100%;
+      width: 40%;
       height: fit-content;
       flex: 2;
       img {
@@ -76,6 +76,7 @@
 
     .home__layout--right {
       flex: auto;
+      width: 60%;
       .home__layout--cards {
         display: grid;
         gap: 1.6em;
