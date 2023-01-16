@@ -1,0 +1,80 @@
+.home {
+  min-height: 100vh;
+  height: 100%;
+  background: #e5e5e5;
+
+  .homeemptystate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 1.2em;
+
+    h3 {
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 140%;
+      text-align: center;
+      color: #808080;
+    }
+  }
+
+  .home__layout {
+    padding: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6em;
+
+    .home__layout--left {
+      display: grid;
+      gap: 0.8em;
+      width: 100%;
+      height: fit-content;
+      flex: 2;
+      img {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+      }
+
+      h3 {
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 130%;
+        color: #000000;
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #0064eb;
+      }
+
+      .profile-groups {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        .groups {
+          display: flex;
+          align-items: center;
+          gap: 0.5em;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 150%;
+          color: #000000;
+        }
+      }
+    }
+
+    .home__layout--right {
+      flex: auto;
+      .home__layout--cards {
+        display: grid;
+        gap: 1.6em;
+      }
+    }
+  }
+}
