@@ -1,4 +1,4 @@
-import { GET_GITHUB_USER } from "../types";
+import { GET_GITHUB_USER, GET_GITHUB_USER_REPOS } from "../types";
 
 const GeneralReducer = (prevState, { type, payload }) => {
   switch (type) {
@@ -6,6 +6,11 @@ const GeneralReducer = (prevState, { type, payload }) => {
       return {
         ...prevState,
         githubUser: payload,
+      };
+    case GET_GITHUB_USER_REPOS:
+      return {
+        ...prevState,
+        githubUserRepos: payload,
       };
     default:
       return prevState;
