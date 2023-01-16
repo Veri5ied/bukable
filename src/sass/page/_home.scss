@@ -92,6 +92,11 @@
   align-items: center;
   justify-content: flex-end;
 
+  @media (max-width: 576px) {
+    flex-direction: column;
+    gap: 1em;
+  }
+
   .pagination-count {
     font-size: 14px;
     line-height: 21px;
