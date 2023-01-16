@@ -86,6 +86,10 @@ const Home = () => {
                       ))}
                   </div>
                   <div className="pagination--container">
+                    <div className="pagination-count">
+                      {pageOffset + REPO_PER_PAGE} of {githubUserRepos.length}{" "}
+                      items
+                    </div>
                     <ReactPaginate
                       breakLabel="..."
                       nextLabel=">"

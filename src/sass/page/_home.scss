@@ -88,11 +88,20 @@
 
 .pagination--container {
   margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .pagination-count {
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    color: #808080;
+  }
 
   .pagination {
-    width: 100%;
     display: flex;
-    justify-content: flex-end;
   }
 
   .pagination > li {
