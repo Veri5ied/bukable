@@ -1,12 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BiSearch, BiUser, BiGroup } from "react-icons/bi";
 import EmptyState from "../components/empty-state/EmptyState";
 import Card from "../components/cards/Card";
 import GeneralContext from "../contexts/general-context/GeneralContext";
 import NoRepoIcon from "../assets/Union.svg";
+import { REPO_PER_PAGE } from "../utils/constants";
+import ReactPaginate from "react-paginate";
 
 const Home = () => {
   const { githubUser, githubUserRepos } = useContext(GeneralContext);
+  const [userRepos, setUserRepos] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
+  const [pageOffset, setPageOffset] = useState(0);
+
+  useEffect(() => {
+    const endOffset = pageOffset + REPO_PER_PAGE;
+    setUserRepos(githubUserRepos.slice(pageOffset, endOffset));
+    setPageNumber(Math.ceil(githubUserRepos.length / REPO_PER_PAGE));
+  }, [githubUserRepos, pageOffset]);
+
+  const handlePageClick = (e) => {
+    const newOffset = (e.selected * REPO_PER_PAGE) % githubUserRepos.length;
+    setPageOffset(newOffset);
+  };
+
   return (
     <div className="home">
       {githubUser.length === 0 && (
@@ -53,8 +70,8 @@ const Home = () => {
                     <h3>Repositories ({githubUserRepos.length})</h3>
                   </div>
                   <div className="home__layout--cards">
-                    {githubUserRepos.length !== 0 &&
-                      githubUserRepos.map((repo, idx) => (
+                    {userRepos.length !== 0 &&
+                      userRepos.map((repo, idx) => (
                         <div key={idx}>
                           <Card
                             cardTitle={repo?.name}
@@ -67,6 +84,27 @@ const Home = () => {
                           />
                         </div>
                       ))}
+                  </div>
+                  <div className="pagination--container">
+                    <ReactPaginate
+                      breakLabel="..."
+                      nextLabel=">"
+                      onPageChange={handlePageClick}
+                      pageRangeDisplayed={5}
+                      pageCount={pageNumber}
+                      previousLabel="<"
+                      renderOnZeroPageCount={null}
+                      breakClassName={"page-item"}
+                      breakLinkClassName={"page-link"}
+                      containerClassName={"pagination"}
+                      pageClassName={"page-item"}
+                      pageLinkClassName={"page-link"}
+                      previousClassName={"page-item"}
+                      previousLinkClassName={"page-link"}
+                      nextClassName={"page-item"}
+                      nextLinkClassName={"page-link"}
+                      activeClassName={"active"}
+                    />
                   </div>
                 </>
               )}
